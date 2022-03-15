@@ -1,8 +1,7 @@
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { Form } from '@/component/molecule/Form';
 import { Footer } from '@/component/organism/Footer';
 import { Header } from '@/component/organism/Header';
@@ -10,21 +9,16 @@ import { answerState } from '@/state/answerState';
 import { valueState } from '@/state/valueState';
 import { FormData } from '@/type/formData.d';
 
-export interface IndexProps {}
+export interface SolutionProps {}
 
-export const defaultProps: IndexProps = {};
+export const defaultProps: SolutionProps = {};
 
-export const baseId = 'page-index';
+export const baseId = 'page-solution';
 
-export const Index = (props: IndexProps) => {
+export const Solution = (props: SolutionProps) => {
   const router = useRouter();
-  const [value, setValue] = useRecoilState(valueState);
+  const value = useRecoilValue(valueState);
   const setAnswer = useSetRecoilState(answerState);
-
-  useEffect(() => {
-    setValue([]);
-    setAnswer('');
-  }, [setValue, setAnswer, router]);
 
   const {
     register,
@@ -34,23 +28,25 @@ export const Index = (props: IndexProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    setValue([...value, data.value]);
-    router.push('/or-later');
+    setAnswer(data.value);
     reset();
+    router.push('/result');
   };
 
   return (
     <>
       <div className='w-full'>
-        <h2 className='text-lg font-bold'>深めたいことや悩みを入力</h2>
+        <h2 className='font-bold'>導き出した答えは</h2>
+        <p className='text-lg font-bold'>{value[value.length - 1]}！</p>
+        <p className='font-bold'>決意を入力！</p>
 
         <Form
           labelId='worries'
           labelName='value'
-          inputPlaceholder='深めたいことを入力'
+          inputPlaceholder='決意を入力'
           inputRegister={register}
           inputErrors={errors.value}
-          buttonLabel={'深める'}
+          buttonLabel={'結果を表示'}
           buttonType='submit'
           buttonVariant='primary'
           orLater={false}
@@ -60,11 +56,10 @@ export const Index = (props: IndexProps) => {
     </>
   );
 };
-
 export const getStaticProps: GetStaticProps = () => {
   return {
     props: {},
   };
 };
 
-export default Index;
+export default Solution;
