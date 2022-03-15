@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .button {
-  @apply w-40  rounded-lg py-2 shadow  hover:opacity-80;
+  @apply w-40 rounded-lg py-2 shadow  hover:opacity-80;
 }
 
 .button-primary {

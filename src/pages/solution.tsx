@@ -8,13 +8,13 @@ import { Header } from '@/component/organism/Header';
 import { valueState } from '@/state/valueState';
 import { FormData } from '@/type/formData.d';
 
-export interface OrLaterProps {}
+export interface SolutionProps {}
 
-export const defaultProps: OrLaterProps = {};
+export const defaultProps: SolutionProps = {};
 
-export const baseId = 'page-or-later';
+export const baseId = 'page-solution';
 
-export const OrLater = (props: OrLaterProps) => {
+export const Solution = (props: SolutionProps) => {
   const router = useRouter();
   const [value, setValue] = useRecoilState(valueState);
 
@@ -29,10 +29,7 @@ export const OrLater = (props: OrLaterProps) => {
     console.log(data);
     setValue([...value, data.value]);
     reset();
-  };
-
-  const onSolution = () => {
-    router.push('/solution');
+    router.push('/result');
   };
 
   return (
@@ -40,20 +37,21 @@ export const OrLater = (props: OrLaterProps) => {
       <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
         <Header />
         <div className='w-full'>
-          <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}と思った？</h2>
+          <h2 className='font-bold'>導き出した答えは</h2>
+          <p className='text-lg font-bold'>{value[value.length - 1]}！</p>
+          <p className='font-bold'>決意を入力！</p>
 
           <Form
             labelId='worries'
             labelName='value'
-            inputPlaceholder='さらに深めたいことを入力'
+            inputPlaceholder='決意を入力'
             inputRegister={register}
             inputErrors={errors.value}
-            buttonLabel={'もっと深める'}
+            buttonLabel={'結果を表示'}
             buttonType='submit'
             buttonVariant='primary'
-            orLater={true}
+            orLater={false}
             onSubmit={handleSubmit(onSubmit)}
-            onClick={onSolution}
           />
         </div>
         <Footer />
@@ -61,11 +59,10 @@ export const OrLater = (props: OrLaterProps) => {
     </>
   );
 };
-
 export const getStaticProps: GetStaticProps = () => {
   return {
     props: {},
   };
 };
 
-export default OrLater;
+export default Solution;

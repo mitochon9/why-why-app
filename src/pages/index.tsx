@@ -36,19 +36,22 @@ export const Index = (props: IndexProps) => {
     <>
       <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
         <Header />
-        <Form
-          labelId='worries'
-          labelName='value'
-          inputPlaceholder='入力'
-          inputRegister={register}
-          inputErrors={errors.value}
-          buttonLabel={'深める'}
-          buttonType='submit'
-          buttonVariant='primary'
-          title='深めたいことや悩みを入力'
-          orLater={false}
-          onSubmit={handleSubmit(onSubmit)}
-        />
+        <div className='w-full'>
+          <h2 className='text-lg font-bold'>深めたいことや悩みを入力</h2>
+
+          <Form
+            labelId='worries'
+            labelName='value'
+            inputPlaceholder='深めたいことを入力'
+            inputRegister={register}
+            inputErrors={errors.value}
+            buttonLabel={'深める'}
+            buttonType='submit'
+            buttonVariant='primary'
+            orLater={false}
+            onSubmit={handleSubmit(onSubmit)}
+          />
+        </div>
         <Footer />
       </div>
     </>
