@@ -28,8 +28,7 @@ export const Result = (props: ResultProps) => {
   }, [setValue, setAnswer, router]);
 
   return (
-    <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
-      <Header />
+    <>
       <div className='w-full'>
         <h2 className='text-lg font-bold'>おめでとう！</h2>
         <p>導き出した答えは</p>
@@ -43,13 +42,10 @@ export const Result = (props: ResultProps) => {
         </ul>
       </div>
 
-      {/* <LinkButton linkHref='/'>トップへ戻る</LinkButton> */}
       <Button buttonType='button' buttonVariant='primary' onClick={onReturnTop}>
         トップへ戻る
       </Button>
-
-      <Footer />
-    </div>
+    </>
   );
 };
 
