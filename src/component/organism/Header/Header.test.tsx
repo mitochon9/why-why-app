@@ -11,9 +11,9 @@ describe('component/organism/Header', () => {
       props = headerProps.default;
     });
 
-    it('なぜなぜアプリと画面に表示されているか', () => {
+    it('なぜなぜブレーンと画面に表示されているか', () => {
       const view = render(<Header {...props} />);
-      expect(screen.getByText('なぜなぜアプリ')).toBeInTheDocument();
+      expect(screen.getByText('なぜなぜブレーン')).toBeInTheDocument();
     });
   });
 });
