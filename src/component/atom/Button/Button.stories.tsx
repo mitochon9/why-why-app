@@ -6,10 +6,10 @@ export default {
   component: Button,
 } as ComponentMeta<typeof Button>;
 
-const Template: Story = (args) => <Button variant='primary' {...args} />;
+const Template: Story = (args) => <Button buttonType='button' buttonVariant='primary' {...args} />;
 
 export const Default = Template.bind({});
 Default.args = { children: '解決しなさそう' };
 
 export const Secondary = Template.bind({});
-Secondary.args = { variant: 'secondary', children: '解決しそう' };
+Secondary.args = { buttonVariant: 'secondary', children: '解決しそう' };

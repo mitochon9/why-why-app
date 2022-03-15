@@ -1,7 +1,24 @@
 export type Button = {
-  variant: 'primary' | 'secondary';
+  buttonType: 'submit' | 'button';
+  buttonVariant: 'primary' | 'secondary';
+  onClick?: (e: any) => void;
+  className?: string;
 };
 
-export const Button: React.FC<Button> = ({ children, variant }) => (
-  <button className={`button button-${variant}`}>{children}</button>
-);
+export const Button: React.FC<Button> = ({
+  children,
+  buttonType,
+  buttonVariant,
+  onClick,
+  className,
+}) => {
+  return (
+    <button
+      type={buttonType}
+      className={`button button-${buttonVariant} ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};

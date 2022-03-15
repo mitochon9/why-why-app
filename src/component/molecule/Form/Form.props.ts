@@ -1,14 +1,20 @@
+import { errorSelector } from 'recoil';
 import { FormProps } from './Form.type';
 
 const defaultProps: FormProps = {
-  label: '何に悩んでいる？',
+  title: 'title',
   labelId: 'worries',
-  step: 'first',
-  previousAnswer: '悩み',
+  labelName: 'value',
+  inputPlaceholder: '入力',
+  inputRegister: 'aaa',
+  inputErrors: undefined,
+  orLater: false,
+  buttonType: 'submit',
+  buttonVariant: 'primary',
+  buttonLabel: '解決しなさそう',
+  onSubmit: () => console.log('ccc'),
 };
 
 export const formProps: { [key: string]: FormProps } = {
   default: defaultProps,
-  orLater: { ...defaultProps, step: 'orLater' },
-  solution: { ...defaultProps, step: 'solution' },
 };

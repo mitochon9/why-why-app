@@ -1,4 +1,5 @@
 import { ComponentMeta, Story } from '@storybook/react';
+import { useForm } from 'react-hook-form';
 import { Input } from './Input';
 
 export default {
@@ -6,9 +7,22 @@ export default {
   component: Input,
 } as ComponentMeta<typeof Input>;
 
-const Template: Story = (args) => (
-  <Input {...args} label='今、何に悩んでいる？' labelId='worriesInput' placeholder='悩みを入力' />
-);
+const Template: Story = (args) => {
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
+  return (
+    <Input
+      {...args}
+      labelId='worriesInput'
+      labelName='value'
+      inputPlaceholder='掘り下げたいことや悩みを入力'
+      inputRegister={register}
+      inputErrors={errors.value}
+    />
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {};

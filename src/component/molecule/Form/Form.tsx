@@ -4,28 +4,38 @@ import { Input } from '@/component/atom/Input';
 
 export const baseId = 'molecule-form';
 
-export const Form: React.FC<FormProps> = ({ labelId, step, previousAnswer }) => (
-  <>
-    <form className='space-y-5'>
-      {step === 'first' ? (
-        <h2>掘り下げたいこと、悩みを入力</h2>
-      ) : step === 'orLater' ? (
-        <h2>なぜ{previousAnswer}？</h2>
-      ) : step === 'solution' ? (
-        <h2>答えは{previousAnswer}！決意を入力！</h2>
-      ) : null}
-      <Input labelId={labelId} placeholder='placeholder' />
+export const Form: React.FC<FormProps> = ({
+  title,
+  labelId,
+  labelName,
+  inputRegister,
+  inputErrors,
+  onSubmit,
+  orLater,
+  buttonLabel,
+}) => {
+  return (
+    <>
+      <form onSubmit={onSubmit} className='space-y-5'>
+        <h2>{title}</h2>
+        <Input
+          labelId={labelId}
+          labelName={labelName}
+          inputPlaceholder='placeholder'
+          inputRegister={inputRegister}
+          inputErrors={inputErrors}
+        />
 
-      {step === 'first' ? (
-        <Button variant='primary'>次に進む</Button>
-      ) : step === 'orLater' ? (
-        <div className='flex gap-x-5'>
-          <Button variant='primary'>解決しなさそう</Button>
-          <Button variant='secondary'>解決しそう</Button>
-        </div>
-      ) : step === 'solution' ? (
-        <Button variant='primary'>解決！</Button>
-      ) : null}
-    </form>
-  </>
-);
+        <Button buttonType='submit' buttonVariant='primary'>
+          {buttonLabel}
+        </Button>
+
+        {orLater && (
+          <Button buttonType='submit' buttonVariant='primary' className='ml-5'>
+            解決しそう
+          </Button>
+        )}
+      </form>
+    </>
+  );
+};
