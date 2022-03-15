@@ -5,11 +5,11 @@ import { Input } from '@/component/atom/Input';
 export const baseId = 'molecule-form';
 
 export const Form: React.FC<FormProps> = ({
-  title,
   labelId,
   labelName,
   inputRegister,
   inputErrors,
+  inputPlaceholder,
   onSubmit,
   onClick,
   orLater,
@@ -17,12 +17,11 @@ export const Form: React.FC<FormProps> = ({
 }) => {
   return (
     <>
-      <form onSubmit={onSubmit} className='w-full max-w-lg space-y-10'>
-        <h2 className='text-lg font-bold'>{title}</h2>
+      <form onSubmit={onSubmit} className='mx-auto w-full max-w-lg space-y-10'>
         <Input
           labelId={labelId}
           labelName={labelName}
-          inputPlaceholder='placeholder'
+          inputPlaceholder={inputPlaceholder}
           inputRegister={inputRegister}
           inputErrors={inputErrors}
         />
