@@ -1,12 +1,10 @@
-import { errorSelector } from 'recoil';
 import { FormProps } from './Form.type';
 
 const defaultProps: FormProps = {
-  title: 'title',
   labelId: 'worries',
   labelName: 'value',
   inputPlaceholder: '入力',
-  inputRegister: 'aaa',
+  inputRegister: '',
   inputErrors: undefined,
   orLater: false,
   buttonType: 'submit',

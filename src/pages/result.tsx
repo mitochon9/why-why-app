@@ -81,6 +81,7 @@ export const Result = (props: ResultProps) => {
         className='pointer-events-none fixed top-0 left-0 z-10 h-full w-full'
       />
       <Header />
+
       <div className='w-full'>
         <h2 className='text-lg font-bold'>おめでとう！</h2>
         <p>導き出した答えは</p>
@@ -94,13 +95,10 @@ export const Result = (props: ResultProps) => {
         </ul>
       </div>
 
-      {/* <LinkButton linkHref='/'>トップへ戻る</LinkButton> */}
       <Button buttonType='button' buttonVariant='primary' onClick={onReturnTop}>
         トップへ戻る
       </Button>
-
-      <Footer />
-    </div>
+    </>
   );
 };
 
