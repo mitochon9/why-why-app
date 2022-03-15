@@ -48,6 +48,13 @@ export const OrLater = (props: OrLaterProps) => {
           <p>深堀りしすぎィ！！</p>
         ) : null}
 
+        {value.length > 1 && (
+          <div>
+            <p>前回の回答</p>
+            <p>{value[value.length - 2]}</p>
+          </div>
+        )}
+
         <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
 
         <Form

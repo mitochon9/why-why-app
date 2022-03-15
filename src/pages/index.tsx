@@ -4,8 +4,6 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { Form } from '@/component/molecule/Form';
-import { Footer } from '@/component/organism/Footer';
-import { Header } from '@/component/organism/Header';
 import { answerState } from '@/state/answerState';
 import { valueState } from '@/state/valueState';
 import { FormData } from '@/type/formData.d';
