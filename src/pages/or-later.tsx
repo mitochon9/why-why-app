@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Form } from '@/component/molecule/Form';
@@ -21,6 +22,10 @@ export const OrLater = (props: OrLaterProps) => {
   const buttonName = useRecoilValue(buttonNameState);
   const [loading, setLoading] = useRecoilState(loadingState);
 
+  useEffect(() => {
+    setLoading(false);
+  }, [setLoading]);
+
   const {
     register,
     formState: { errors },
@@ -29,9 +34,11 @@ export const OrLater = (props: OrLaterProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
+    setLoading(true);
     setValue([...value, data.value]);
     if (buttonName === 'primary') {
       reset();
+      setLoading(false);
     }
 
     if (buttonName === 'secondary') {

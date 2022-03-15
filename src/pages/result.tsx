@@ -1,9 +1,11 @@
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import { useCallback, useEffect, useRef } from 'react';
 import ReactCanvasConfetti from 'react-canvas-confetti';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { LinkButton } from '@/component/atom/LinkButton';
 import { answerState } from '@/state/answerState';
+import { loadingState } from '@/state/loadingState';
 import { valueState } from '@/state/valueState';
 
 export interface ResultProps {}
@@ -15,6 +17,11 @@ export const baseId = 'page-result';
 export const Result = (props: ResultProps) => {
   const value = useRecoilValue(valueState);
   const answer = useRecoilValue(answerState);
+  const [loading, setLoading] = useRecoilState(loadingState);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [setLoading]);
 
   const refAnimationInstance: any = useRef(null);
 
@@ -66,6 +73,12 @@ export const Result = (props: ResultProps) => {
 
   return (
     <>
+      {loading && (
+        <div className='overlay'>
+          <Image src='/img/spinner.svg' alt='spinner' width={160} height={160} />
+        </div>
+      )}
+
       <ReactCanvasConfetti
         refConfetti={getInstance}
         className='pointer-events-none fixed top-0 left-0 z-10 h-full w-full'

@@ -36,14 +36,10 @@ export const Index = (props: IndexProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    try {
-      setLoading(true);
-      setValue([...value, data.value]);
-      router.push('/or-later');
-      reset();
-    } finally {
-      setLoading(false);
-    }
+    setLoading(true);
+    setValue([...value, data.value]);
+    router.push('/or-later');
+    reset();
   };
 
   return (

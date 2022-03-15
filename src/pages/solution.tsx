@@ -1,9 +1,12 @@
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { Form } from '@/component/molecule/Form';
 import { answerState } from '@/state/answerState';
+import { loadingState } from '@/state/loadingState';
 import { valueState } from '@/state/valueState';
 import { FormData } from '@/type/formData.d';
 
@@ -18,6 +21,12 @@ export const Solution = (props: SolutionProps) => {
   const value = useRecoilValue(valueState);
   const setAnswer = useSetRecoilState(answerState);
 
+  const [loading, setLoading] = useRecoilState(loadingState);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [setLoading]);
+
   const {
     register,
     formState: { errors },
@@ -26,6 +35,7 @@ export const Solution = (props: SolutionProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
+    setLoading(true);
     setAnswer(data.value);
     reset();
     router.push('/result');
@@ -33,6 +43,12 @@ export const Solution = (props: SolutionProps) => {
 
   return (
     <>
+      {loading && (
+        <div className='overlay'>
+          <Image src='/img/spinner.svg' alt='spinner' width={160} height={160} />
+        </div>
+      )}
+
       <div className='w-full'>
         <h2 className='font-bold'>導き出した答えは</h2>
         <p className='text-lg font-bold'>{value[value.length - 1]}！</p>
