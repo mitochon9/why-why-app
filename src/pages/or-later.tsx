@@ -1,9 +1,11 @@
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Form } from '@/component/molecule/Form';
 import { buttonNameState } from '@/state/buttonNameState';
+import { loadingState } from '@/state/loadingState';
 import { valueState } from '@/state/valueState';
 import { FormData } from '@/type/formData.d';
 
@@ -17,6 +19,7 @@ export const OrLater = (props: OrLaterProps) => {
   const router = useRouter();
   const [value, setValue] = useRecoilState(valueState);
   const buttonName = useRecoilValue(buttonNameState);
+  const [loading, setLoading] = useRecoilState(loadingState);
 
   const {
     register,
@@ -39,6 +42,12 @@ export const OrLater = (props: OrLaterProps) => {
 
   return (
     <>
+      {loading && (
+        <div className='overlay'>
+          <Image src='/img/spinner.svg' alt='spinner' width={160} height={160} />
+        </div>
+      )}
+
       <div className='w-full'>
         {value.length === 10 ? (
           <p>頑張ってるね！</p>
