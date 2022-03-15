@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const valueState = atom<string>({
+export const valueState = atom<string[]>({
   key: 'valueState',
-  default: '',
+  default: [],
 });

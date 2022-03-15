@@ -1,32 +1,38 @@
+import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { useSetRecoilState } from 'recoil';
-import { HomeProps } from './Home.type';
+import { useRecoilState } from 'recoil';
 import { Form } from '@/component/molecule/Form';
 import { Footer } from '@/component/organism/Footer';
 import { Header } from '@/component/organism/Header';
 import { valueState } from '@/state/valueState';
+import { FormData } from '@/type/formData.d';
 
-type FormData = {
-  value: string;
-};
+export interface OrLaterProps {}
 
-export const baseId = 'template-home';
+export const defaultProps: OrLaterProps = {};
 
-export const Home: React.FC<HomeProps> = () => {
+export const baseId = 'page-or-later';
+
+export const OrLater = (props: OrLaterProps) => {
   const router = useRouter();
-  const setValue = useSetRecoilState(valueState);
+  const [value, setValue] = useRecoilState(valueState);
 
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
     console.log(data);
-    setValue(data.value);
-    router.push('/orLater');
+    setValue([...value, data.value]);
+    reset();
+  };
+
+  const onSolution = () => {
+    router.push('/solution');
   };
 
   return (
@@ -39,15 +45,24 @@ export const Home: React.FC<HomeProps> = () => {
           inputPlaceholder='入力'
           inputRegister={register}
           inputErrors={errors.value}
-          buttonLabel={'次に進む'}
+          buttonLabel={'もっと深める'}
           buttonType='submit'
           buttonVariant='primary'
-          title='深めたいことや悩みを入力'
-          orLater={false}
+          title={`なぜ${value[value.length - 1]}と思った？`}
+          orLater={true}
           onSubmit={handleSubmit(onSubmit)}
+          onClick={onSolution}
         />
         <Footer />
       </div>
     </>
   );
 };
+
+export const getStaticProps: GetStaticProps = () => {
+  return {
+    props: {},
+  };
+};
+
+export default OrLater;
