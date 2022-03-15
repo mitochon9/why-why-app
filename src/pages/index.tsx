@@ -26,7 +26,6 @@ export const Index = (props: IndexProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
     setValue([...value, data.value]);
     router.push('/or-later');
     reset();

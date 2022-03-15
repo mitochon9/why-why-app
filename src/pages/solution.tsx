@@ -28,7 +28,6 @@ export const Solution = (props: SolutionProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
     setAnswer(data.value);
     reset();
     router.push('/result');

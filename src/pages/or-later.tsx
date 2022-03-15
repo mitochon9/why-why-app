@@ -26,7 +26,6 @@ export const OrLater = (props: OrLaterProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
     setValue([...value, data.value]);
     reset();
   };
