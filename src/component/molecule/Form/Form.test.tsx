@@ -21,28 +21,4 @@ describe('component/molecule/Form', () => {
       expect(input).toHaveValue('worries');
     });
   });
-
-  describe('orLater', () => {
-    beforeEach(() => {
-      props = formProps.orLater;
-    });
-
-    it('orLater の時に解決しそうボタンがあるか', () => {
-      const view = render(<Form {...props} />);
-
-      expect(screen.getByText('解決しそう')).toBeInTheDocument();
-    });
-  });
-
-  describe('solution', () => {
-    beforeEach(() => {
-      props = formProps.solution;
-    });
-
-    it('solution の時に解決！ボタンがあるか', () => {
-      const view = render(<Form {...props} />);
-
-      expect(screen.getByText('解決！')).toBeInTheDocument();
-    });
-  });
 });
