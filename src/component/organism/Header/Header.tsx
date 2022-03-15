@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = () => (
       <p className='text-xs'>
         ※思考の沼にはまり込んで抜け出せなくなる可能性があります。
         <br />
-        取り扱いにはご注意ください。
+        取り扱いにはご注意くださいませ。
       </p>
     </header>
   </>

@@ -17,6 +17,7 @@ export const Button: React.FC<Button> = ({
       type={buttonType}
       className={`button button-${buttonVariant} ${className}`}
       onClick={onClick}
+      autoFocus
     >
       {children}
     </button>
