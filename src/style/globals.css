@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button {
+  @apply w-40  rounded-lg py-2 shadow;
+}
+
+.button-primary {
+  @apply bg-primary-600  text-white hover:bg-primary-500;
+}
+
+.button-secondary {
+  @apply bg-orange text-white;
+}
