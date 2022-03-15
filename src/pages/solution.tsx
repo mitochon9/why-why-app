@@ -1,10 +1,11 @@
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { Form } from '@/component/molecule/Form';
 import { Footer } from '@/component/organism/Footer';
 import { Header } from '@/component/organism/Header';
+import { answerState } from '@/state/answerState';
 import { valueState } from '@/state/valueState';
 import { FormData } from '@/type/formData.d';
 
@@ -16,7 +17,8 @@ export const baseId = 'page-solution';
 
 export const Solution = (props: SolutionProps) => {
   const router = useRouter();
-  const [value, setValue] = useRecoilState(valueState);
+  const value = useRecoilValue(valueState);
+  const setAnswer = useSetRecoilState(answerState);
 
   const {
     register,
@@ -27,7 +29,7 @@ export const Solution = (props: SolutionProps) => {
 
   const onSubmit = (data: FormData) => {
     console.log(data);
-    setValue([...value, data.value]);
+    setAnswer(data.value);
     reset();
     router.push('/result');
   };

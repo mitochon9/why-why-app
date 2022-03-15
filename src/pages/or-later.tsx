@@ -40,7 +40,7 @@ export const OrLater = (props: OrLaterProps) => {
       <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
         <Header />
         <div className='w-full'>
-          <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}と思った？</h2>
+          <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
 
           <Form
             labelId='worries'
