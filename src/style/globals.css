@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .button {
-  @apply w-40  rounded-lg py-2 shadow;
+  @apply w-40  rounded-lg py-2 shadow  hover:opacity-80;
 }
 
 .button-primary {
-  @apply bg-primary-600  text-white hover:bg-primary-500;
+  @apply bg-primary-600  text-white;
 }
 
 .button-secondary {

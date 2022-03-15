@@ -9,7 +9,7 @@ export default {
 const Template: Story = (args) => <Button variant='primary' {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { variant: 'primary', children: '解決しなさそう' };
+Default.args = { children: '解決しなさそう' };
 
 export const Secondary = Template.bind({});
 Secondary.args = { variant: 'secondary', children: '解決しそう' };
