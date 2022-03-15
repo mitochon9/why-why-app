@@ -26,7 +26,6 @@ export const OrLater = (props: OrLaterProps) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
     setValue([...value, data.value]);
     reset();
   };
@@ -37,8 +36,20 @@ export const OrLater = (props: OrLaterProps) => {
 
   return (
     <>
-      <div className='w-full'>
-        <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
+
+      <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
+        <Header />
+        <div className='w-full'>
+          {value.length === 10 ? (
+            <p>頑張ってるね！</p>
+          ) : value.length === 30 ? (
+            <p>思考の沼にハマってない...？</p>
+          ) : value.length === 100 ? (
+            <p>深堀りしすぎィ！！</p>
+          ) : null}
+
+          <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
+
 
         <Form
           labelId='worries'
