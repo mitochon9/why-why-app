@@ -13,3 +13,7 @@
 .button-secondary {
   @apply bg-orange text-white;
 }
+
+.input {
+  @apply w-full rounded py-2 px-2 shadow outline-2 outline-primary-600 ring-2 ring-primary-600;
+}
