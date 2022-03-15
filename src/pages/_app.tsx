@@ -6,7 +6,7 @@ import { Header } from '@/component/organism/Header';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <RecoilRoot>
-    <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
+    <div className='flex min-h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
       <Header />
       <Component {...pageProps} />
       <Footer />
