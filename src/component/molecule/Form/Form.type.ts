@@ -9,13 +9,3 @@ export type FormProps = Input &
     orLater: boolean;
     buttonLabel: string;
   };
-// {
-// title: string;
-// labelId: string;
-// labelName: string;
-// formRegister: any;
-// formErrors: any;
-// onSubmit: any;
-// orLater: boolean;
-// buttonLabel: string;
-// }

@@ -11,6 +11,7 @@ export const Form: React.FC<FormProps> = ({
   inputRegister,
   inputErrors,
   onSubmit,
+  onClick,
   orLater,
   buttonLabel,
 }) => {
@@ -31,7 +32,7 @@ export const Form: React.FC<FormProps> = ({
         </Button>
 
         {orLater && (
-          <Button buttonType='submit' buttonVariant='primary' className='ml-5'>
+          <Button buttonType='submit' buttonVariant='secondary' className='ml-5' onClick={onClick}>
             解決しそう
           </Button>
         )}
