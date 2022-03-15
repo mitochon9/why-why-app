@@ -11,7 +11,8 @@
     "test:dev": "jest --watch",
     "sb": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "generate": "plop --plopfile ./generator/plopfile.js"
+    "generate": "plop --plopfile ./generator/plopfile.js",
+    "preinstall": "npx npm-force-resolutions"
   },
   "prettier": {
     "trailingComma": "all",
@@ -57,5 +58,13 @@
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.5.5",
     "zod": "^3.12.0"
+  },
+  "resolutions": {
+    "ansi-regex": "5.0.1",
+    "nth-check": "2.0.1",
+    "trim": "0.0.3",
+    "browserslist": "4.16.5",
+    "glob-parent": "5.1.2",
+    "immer": "9.0.6"
   }
 }
