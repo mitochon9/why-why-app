@@ -37,26 +37,22 @@ export const OrLater = (props: OrLaterProps) => {
 
   return (
     <>
-      <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
-        <Header />
-        <div className='w-full'>
-          <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
+      <div className='w-full'>
+        <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
 
-          <Form
-            labelId='worries'
-            labelName='value'
-            inputPlaceholder='さらに深めたいことを入力'
-            inputRegister={register}
-            inputErrors={errors.value}
-            buttonLabel={'もっと深める'}
-            buttonType='submit'
-            buttonVariant='primary'
-            orLater={true}
-            onSubmit={handleSubmit(onSubmit)}
-            onClick={onSolution}
-          />
-        </div>
-        <Footer />
+        <Form
+          labelId='worries'
+          labelName='value'
+          inputPlaceholder='さらに深めたいことを入力'
+          inputRegister={register}
+          inputErrors={errors.value}
+          buttonLabel={'もっと深める'}
+          buttonType='submit'
+          buttonVariant='primary'
+          orLater={true}
+          onSubmit={handleSubmit(onSubmit)}
+          onClick={onSolution}
+        />
       </div>
     </>
   );

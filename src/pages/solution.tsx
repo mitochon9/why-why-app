@@ -36,27 +36,23 @@ export const Solution = (props: SolutionProps) => {
 
   return (
     <>
-      <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
-        <Header />
-        <div className='w-full'>
-          <h2 className='font-bold'>導き出した答えは</h2>
-          <p className='text-lg font-bold'>{value[value.length - 1]}！</p>
-          <p className='font-bold'>決意を入力！</p>
+      <div className='w-full'>
+        <h2 className='font-bold'>導き出した答えは</h2>
+        <p className='text-lg font-bold'>{value[value.length - 1]}！</p>
+        <p className='font-bold'>決意を入力！</p>
 
-          <Form
-            labelId='worries'
-            labelName='value'
-            inputPlaceholder='決意を入力'
-            inputRegister={register}
-            inputErrors={errors.value}
-            buttonLabel={'結果を表示'}
-            buttonType='submit'
-            buttonVariant='primary'
-            orLater={false}
-            onSubmit={handleSubmit(onSubmit)}
-          />
-        </div>
-        <Footer />
+        <Form
+          labelId='worries'
+          labelName='value'
+          inputPlaceholder='決意を入力'
+          inputRegister={register}
+          inputErrors={errors.value}
+          buttonLabel={'結果を表示'}
+          buttonType='submit'
+          buttonVariant='primary'
+          orLater={false}
+          onSubmit={handleSubmit(onSubmit)}
+        />
       </div>
     </>
   );
