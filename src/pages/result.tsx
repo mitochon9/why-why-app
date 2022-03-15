@@ -1,11 +1,8 @@
 import { GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import ReactCanvasConfetti from 'react-canvas-confetti';
-import { useRecoilState } from 'recoil';
-import { Button } from '@/component/atom/Button';
-import { Footer } from '@/component/organism/Footer';
-import { Header } from '@/component/organism/Header';
+import { useRecoilValue } from 'recoil';
+import { LinkButton } from '@/component/atom/LinkButton';
 import { answerState } from '@/state/answerState';
 import { valueState } from '@/state/valueState';
 
@@ -16,15 +13,8 @@ export const defaultProps: ResultProps = {};
 export const baseId = 'page-result';
 
 export const Result = (props: ResultProps) => {
-  const router = useRouter();
-  const [value, setValue] = useRecoilState(valueState);
-  const [answer, setAnswer] = useRecoilState(answerState);
-
-  const onReturnTop = useCallback(() => {
-    setValue([]);
-    setAnswer('');
-    router.push('/');
-  }, [setValue, setAnswer, router]);
+  const value = useRecoilValue(valueState);
+  const answer = useRecoilValue(answerState);
 
   const refAnimationInstance: any = useRef(null);
 
@@ -75,12 +65,11 @@ export const Result = (props: ResultProps) => {
   }, [fire]);
 
   return (
-    <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
+    <>
       <ReactCanvasConfetti
         refConfetti={getInstance}
         className='pointer-events-none fixed top-0 left-0 z-10 h-full w-full'
       />
-      <Header />
 
       <div className='w-full'>
         <h2 className='text-lg font-bold'>おめでとう！</h2>
@@ -95,9 +84,7 @@ export const Result = (props: ResultProps) => {
         </ul>
       </div>
 
-      <Button buttonType='button' buttonVariant='primary' onClick={onReturnTop}>
-        トップへ戻る
-      </Button>
+      <LinkButton linkHref='/'>トップへ戻る</LinkButton>
     </>
   );
 };

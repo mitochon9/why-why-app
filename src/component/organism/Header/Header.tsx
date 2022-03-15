@@ -8,7 +8,7 @@ export const Header: React.FC<HeaderProps> = () => (
     <header>
       <Link href='/'>
         <a>
-          <h1 className='text-xl font-bold text-primary-700'>なぜなぜアプリ</h1>
+          <h1 className='mt-5 text-xl font-bold text-primary-700'>なぜなぜアプリ</h1>
         </a>
       </Link>
       <h2 className='font-bold'>あなたのお悩み解決！...するかも？</h2>

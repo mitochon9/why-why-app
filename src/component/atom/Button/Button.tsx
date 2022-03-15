@@ -1,5 +1,6 @@
 export type Button = {
   buttonType: 'submit' | 'button';
+  value?: 'primary' | 'secondary';
   buttonVariant: 'primary' | 'secondary';
   onClick?: (e: any) => void;
   className?: string;

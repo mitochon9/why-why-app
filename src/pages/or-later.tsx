@@ -1,10 +1,9 @@
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { Form } from '@/component/molecule/Form';
-import { Footer } from '@/component/organism/Footer';
-import { Header } from '@/component/organism/Header';
+import { buttonNameState } from '@/state/buttonNameState';
 import { valueState } from '@/state/valueState';
 import { FormData } from '@/type/formData.d';
 
@@ -17,6 +16,7 @@ export const baseId = 'page-or-later';
 export const OrLater = (props: OrLaterProps) => {
   const router = useRouter();
   const [value, setValue] = useRecoilState(valueState);
+  const buttonName = useRecoilValue(buttonNameState);
 
   const {
     register,
@@ -27,29 +27,28 @@ export const OrLater = (props: OrLaterProps) => {
 
   const onSubmit = (data: FormData) => {
     setValue([...value, data.value]);
-    reset();
-  };
+    if (buttonName === 'primary') {
+      reset();
+    }
 
-  const onSolution = () => {
-    router.push('/solution');
+    if (buttonName === 'secondary') {
+      reset();
+      router.push('solution');
+    }
   };
 
   return (
     <>
+      <div className='w-full'>
+        {value.length === 10 ? (
+          <p>頑張ってるね！</p>
+        ) : value.length === 30 ? (
+          <p>思考の沼にハマってない...？</p>
+        ) : value.length === 100 ? (
+          <p>深堀りしすぎィ！！</p>
+        ) : null}
 
-      <div className='flex h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
-        <Header />
-        <div className='w-full'>
-          {value.length === 10 ? (
-            <p>頑張ってるね！</p>
-          ) : value.length === 30 ? (
-            <p>思考の沼にハマってない...？</p>
-          ) : value.length === 100 ? (
-            <p>深堀りしすぎィ！！</p>
-          ) : null}
-
-          <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
-
+        <h2 className='text-lg font-bold'>なぜ{value[value.length - 1]}？</h2>
 
         <Form
           labelId='worries'
@@ -62,7 +61,6 @@ export const OrLater = (props: OrLaterProps) => {
           buttonVariant='primary'
           orLater={true}
           onSubmit={handleSubmit(onSubmit)}
-          onClick={onSolution}
         />
       </div>
     </>
