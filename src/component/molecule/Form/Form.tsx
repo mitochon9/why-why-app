@@ -17,7 +17,7 @@ export const Form: React.FC<FormProps> = ({
   return (
     <>
       <form onSubmit={onSubmit} className='space-y-5'>
-        <h2>{title}</h2>
+        <h2 className='text-lg font-bold'>{title}</h2>
         <Input
           labelId={labelId}
           labelName={labelName}
