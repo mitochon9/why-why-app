@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.min-h-100svh {
+  min-height: 100svh;
+}
+
 .button {
   @apply w-40 rounded-lg py-2 shadow  hover:opacity-80;
 }
