@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { Form } from '@/component/molecule/Form';
