@@ -8,7 +8,7 @@ export const Seo = () => (
     openGraph={{
       url: 'https://why-why-app.vercel.app/',
       type: 'website',
-      title: 'ポケガチャ！',
+      title: 'なぜなぜブレーン',
       description: 'あなたのお悩み解決！…するかも？',
       images: [
         {
