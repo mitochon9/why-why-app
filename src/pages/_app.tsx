@@ -17,7 +17,8 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
       <GoogleTagManager googleTagManagerId={googleTagManagerId as GoogleTagManagerId} />
       <RecoilRoot>
         <Seo />
-        <div className='flex min-h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
+
+        <div className='min-h-100svh flex min-h-screen flex-col items-center justify-between px-2 text-center md:px-0'>
           <Header />
           <Component {...pageProps} />
           <Footer />
